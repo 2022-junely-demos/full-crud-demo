@@ -1,5 +1,5 @@
 import { usePosts } from '../../hooks/usePosts';
-import Post from './Post';
+import PostCard from './PostCard';
 import './Posts.css';
 
 export default function Posts() {
@@ -9,7 +9,7 @@ export default function Posts() {
   return (
     <div>
       {posts.map((post) => (
-        <Post key={post.id} title={post.title} description={post.description} />
+        <PostCard key={post.id} {...post} />
       ))}
     </div>
   );
