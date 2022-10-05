@@ -1,0 +1,22 @@
+header {
+  height: 40px;
+  background-color: var(--color-green);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  color: var(--color-light);
+}
+
+header a,
+header .link {
+  text-decoration: none;
+  color: var(--color-light);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+header h3 {
+  color: var(--color-light);
+}
