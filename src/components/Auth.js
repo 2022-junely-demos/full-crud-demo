@@ -22,7 +22,7 @@ export default function Auth() {
   };
 
   if (user) {
-    return <Redirect to="/tasks" />;
+    return <Redirect to="/posts" />;
   }
 
   return (
