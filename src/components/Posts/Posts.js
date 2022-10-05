@@ -1,4 +1,5 @@
 import { usePosts } from '../../hooks/usePosts';
+import Post from './Post';
 import './Posts.css';
 
 export default function Posts() {
@@ -8,7 +9,7 @@ export default function Posts() {
   return (
     <div>
       {posts.map((post) => (
-        <h1 key={post.id}>{post.title}</h1>
+        <Post key={post.id} title={post.title} description={post.description} />
       ))}
     </div>
   );
