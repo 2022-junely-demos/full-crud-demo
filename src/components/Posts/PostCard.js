@@ -10,7 +10,7 @@ export default function PostCard({ title, description, user_id, id }) {
       <p>{description}</p>
       {owner && (
         <p>
-          <Link to={`/posts/edit/${id}`}>Edit </Link>
+          <Link to={`/posts/edit/${id}`}>Edit {id}</Link>
         </p>
       )}
     </div>
