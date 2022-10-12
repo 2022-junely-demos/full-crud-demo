@@ -14,7 +14,7 @@ export default function Header() {
       <h2>Bulletin Board</h2>
       {user && (
         <>
-          <div>Hello {user.email}</div>
+          <div data-testid="hello-message">Hello {user.email}</div>
           <button onClick={handleClick}>Sign Out</button>
           <Link to="/posts/new">Add New Post</Link>
         </>

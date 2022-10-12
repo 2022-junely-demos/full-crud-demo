@@ -8,17 +8,21 @@ export default function Auth() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const { user, setUser } = useUser();
+  const { user, setUser, setAuthError, authError } = useUser();
 
   const clickHandler = async () => {
-    // call authUser with state
-    const userResp = await authUser(email, password, type);
-    // set user
-    setUser(userResp);
-    // reset the inputs
-    setEmail('');
-    setPassword('');
-    // redirect to /tasks
+    try {
+      // call authUser with state
+      const userResp = await authUser(email, password, type);
+      console.log({ userResp });
+      // set user
+      setUser(userResp);
+
+      // redirect to /tasks
+    } catch (e) {
+      console.log(e.message);
+      setAuthError(e.message);
+    }
   };
 
   if (user) {
@@ -26,16 +30,22 @@ export default function Auth() {
   }
 
   return (
-    <div>
+    <>
+      {authError && <div>{authError}</div>}
       <div className="form-controls">
-        <label>Email:</label>
-        <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
+        <label htmlFor="email">Email:</label>
+        <input type="text" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
       </div>
       <div className="form-controls">
-        <label>Password:</label>
-        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+        <label htmlFor="password">Password:</label>
+        <input
+          type="password"
+          id="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
       </div>
       <button onClick={clickHandler}>Submit</button>
-    </div>
+    </>
   );
 }

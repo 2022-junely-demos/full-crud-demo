@@ -11,7 +11,10 @@ export async function authUser(email, password, type) {
   } else {
     response = await client.auth.signIn({ email, password });
   }
-
+  if (response.error) {
+    throw new Error(response.error.message);
+  }
+  console.log(response.user);
   return response.user;
 }
 
